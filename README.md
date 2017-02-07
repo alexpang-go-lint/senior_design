@@ -4,8 +4,6 @@ Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme -
 
 Walkthrough
 -----------
-|  |  |  | 
-V  V  V  V
 
 1.)Main.java makes a 2d ArrayList that allows it to take in as many different predictions that are in the Results.csv file.
 
