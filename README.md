@@ -21,14 +21,14 @@ Walkthrough
           |a b c d|
           |a b c d|
           
-          Rather than checking a against b by doing arrayList[a][1] == arraylist[a][1] incrementing through a which would cause paging and different problems. Make collumns makes it look like this.
+          Rather than checking a against b by doing arrayList[x][0] == arraylist[x][1] incrementing through x which would cause paging and different problems. Make collumns makes it look like this.
           
           |a a a a|
           |b b b b|
           |c c c c|
           |d d d d|
           
-          Which allow us to do arrayList[0][a] == arrayList[1][a]
+          Which allow us to do arrayList[0][x] == arrayList[1][x]
           
 6.)Then after make collumns and those that are not simular then sim.process then swaps it back to format below to allow for voting by           process.getPredictions 
           
