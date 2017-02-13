@@ -1,5 +1,5 @@
-Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme 
----------------------------------------------------------------------------------------------------------------------------------
+Readme
+
 *********Program to take .csv predictions eliminate simular, vote and produce submission for competition.******************
 
 Walkthrough
@@ -14,14 +14,14 @@ Walkthrough
 4.)Then it creates an object called CheckSim which checks for simularity.
 
 5.)ArrayLists is then passed to make collums where is then compares collumns into an arraylist rather then Tranversing down 
-          calling a different ArrayLIst position. For example
+          calling a different ArrayLIst position. For example a,b,c, and d are all different predictions.
           
           |a b c d|
           |a b c d|
           |a b c d|
           |a b c d|
           
-          Rather than checking a against b by doing arrayList[x][0] == arraylist[x][1] incrementing through x which would cause paging and different problems. Make collumns makes it look like this.
+          Rather than checking a against b by doing arrayList[x][0] == arraylist[x][1] incrementing through x which would cause deleting problems and other issues. Make collumns makes it look like this.
           
           |a a a a|
           |b b b b|
@@ -40,4 +40,4 @@ Walkthrough
 7.)After getPredictions, creatSubmission then writes .csv file to be submitted.
 
 ---------------------------------------------------------------------------------------------------------------------------------
-Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme - Readme 
+
