@@ -1,37 +1,16 @@
 import java.util.ArrayList;
 
+
 public class CheckSim {
 
 	
-	public ArrayList<String> makeCollumn(ArrayList<ArrayList<String>> arrayLists, int position){
-		ArrayList<String> collumn = new ArrayList<String>();
-		for(int i = 0; i < arrayLists.size(); i++){
-			collumn.add(arrayLists.get(i).get(position));
-		}
-		return collumn;
-	}
-
-		public boolean simular(ArrayList<String> collumn1, ArrayList<String> collumn2){
-			int same =0;
-			for(int i = 0; i < collumn1.size(); i++){
-				if(collumn1.get(i).equals(collumn2.get(i))){
-					same++;
-				}
-			}
-			double percent = same/collumn1.size();
 			
-			if(percent<.60){
-			return false;
-			}
-			
-			return true;
-		}
-		
-		public ArrayList<ArrayList<String>> makeCollumns(ArrayList<ArrayList<String>> arrayLists){
-			ArrayList<ArrayList<String>> collumns = new ArrayList<ArrayList<String>>();
+		public ArrayList<ArrayList<String>> getUnSimCollumns(ArrayList<ArrayList<String>> arrayLists){
+			ArrayList<Column> collumns = new ArrayList<Column>();
 			ArrayList<ArrayList<String>> FinishedArray = new ArrayList<ArrayList<String>>();
 			for(int i = 0; i < arrayLists.get(0).size();i++){
-				collumns.add(makeCollumn(arrayLists,i));
+				Column temp = new Column(arrayLists,i);
+				collumns.add(temp);
 			}
 			
 			for(int i = 0; i < collumns.size();i++){
@@ -40,12 +19,12 @@ public class CheckSim {
 					if(i == j){
 						continue;
 					}
-					if(simular(collumns.get(i),collumns.get(j))){
+					if(collumns.get(i).simular(collumns.get(j))){
 						same = true;
 					}
 				}
 				if(!same)
-					FinishedArray.add(collumns.get(i));
+					FinishedArray.add(collumns.get(i).column);
 			}
 			
 			return FinishedArray;
@@ -66,5 +45,34 @@ public class CheckSim {
 			
 			
 		}
-	
+
+		public ArrayList<ArrayList<String>> disConnectedNodes(ArrayList<ArrayList<String>> arrayLists){
+			Graph graph = new Graph(arrayLists.get(0).size());	// gets the number of columns then does not count the pump number
+			ArrayList<Column> columns = new ArrayList<Column>();	// Makes an array of columns to be filled	
+			ArrayList<ArrayList<String>> FinishedArray = new ArrayList<ArrayList<String>>(); // hold the final array after collumns selected
+			for(int i = 0; i < arrayLists.get(0).size();i++){		// adds columns
+				Column temp = new Column(arrayLists,i);
+				columns.add(temp);
+			}
+			
+			for(int i = 0; i < columns.size();i++){				// cycle through and see which columns are similar
+				
+				for(int j = 0; j < columns.size();j++){
+					
+					if(columns.get(i).simular(columns.get(j))){
+						graph.addEdge(i, j);
+					}
+				}
+				
+			}
+			
+			graph.disconnectedNodes();		// calls object graph to get disconnected nodes
+			
+			for(int i = 0; i < graph.disNodes.size();i++){				// cycle through and see which columns are similar
+			FinishedArray.add(columns.get(graph.disNodes.get(i)).column);
+			System.out.println(graph.disNodes.get(i));
+			}
+			return FinishedArray;
+			
+		}
 }
