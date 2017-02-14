@@ -10,7 +10,7 @@ public class Column {
 		}
 	}
 	
-	public boolean simular(Column collumn2){
+	public boolean simular(Column collumn2,int allowed){
 		int same =0;
 		for(int i = 0; i < column.size(); i++){
 			if(column.get(i).equals(collumn2.column.get(i))){
@@ -19,7 +19,7 @@ public class Column {
 		}
 		
 		
-		if(same>11138){			// 60 percent = 8910, 75% = 11138, 90% = 13365
+		if(same>allowed){			
 		return true;
 		}
 		
