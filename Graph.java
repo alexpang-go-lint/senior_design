@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Graph {
 	ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();	// will hold edges, each index is a node
 	boolean[] active;		// Tells if node is active
@@ -47,6 +49,17 @@ public class Graph {
 	
 	public int size(){
 		return active.length;
+	}
+	
+	public void print(){
+		for(int i = 0; i < graph.size(); i++){
+			System.out.print(i+": ");
+			for(int j = 0; j < graph.get(i).size(); j++){
+				System.out.print(graph.get(i).get(j)+" ");
+			}
+			System.out.println();
+		}
+		
 	}
 	
 }
